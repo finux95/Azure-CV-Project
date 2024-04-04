@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-	<title>Risen - FREE Bootstrap 5 Resume/CV Template For Developers</title>
+	<title>Fin Barnett - Professional Profile</title>
 	
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -22,13 +22,31 @@
     <script defer src="assets/fontawesome/js/all.js"></script>
 
 	<!-- Theme CSS -->  
-	<link id="theme-style" rel="stylesheet" href="assets/css/risen.css">
+	<link id="theme-style" rel="stylesheet" href="assets/css/shine.css">
 
 </head> 
 
 
-<body>
+<body data-bs-theme="dark">
+	<div class="form-check form-switch mx-4">
+		<input
+		class="form-check-input p-2"
+		type="checkbox"
+		role="switch"
+		id="flexSwitchCheckChecked"
+		checked
+		onclick="myfunction()"
+		/>
+	</div>
 	
+	<script>
+		function myfunction() {
+			var element = document.body;
+			element.dataset.bsTheme =
+				element.dataset.bsTheme == "light" ? "dark" : "light";
+		}
+	</script>
+
 	<div class="container-fluid">
 			
 			<div class="main-content-wrapper">
