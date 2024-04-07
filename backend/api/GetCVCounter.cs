@@ -7,29 +7,40 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Functions.Worker;
+using System.Configuration;
+using System.Diagnostics.Metrics;
+using System.Net.Http;
+using System.Text;
 
 namespace Company.Function
 {
     public static class GetCVCounter
     {
         [FunctionName("GetCVCounter")]
-        public static async Task<IActionResult> Run(
+        public static HttpResponseMessage Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [CosmosDB(databaseName:"AzureCV", collectionName: "%Counter%", ConnectionStringSetting = "%AzureCVConnectionString%", Id = "1", PartitionKey = "1")] Counter counter,
+            [CosmosDB(databaseName:"AzureCV", collectionName: "%Counter%", Connection = "%AzureCVConnectionString%", Id = "1", PartitionKey = "1")] out Counter updatedCounter,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string name = req.Query["name"];
+            updatedCounter = counter;
+            updatedCounter.Count += 1;
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+            var JsonToReturn = JsonConvert.SerializeObject(counter);
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
+            return new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+            {
+                Content = new StringContent(JsonToReturn, Encoding.UTF8, "application/json")
+            };
         }
+    }
+
+    public class Counter
+    {
+        public int Count { get; internal set; }
     }
 }
