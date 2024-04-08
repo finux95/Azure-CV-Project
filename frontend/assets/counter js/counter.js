@@ -2,11 +2,12 @@ window.addEventListener('DOMContentLoaded',(event) =>{
     getVisitCount();
 })
 
-const functionApi = 'http://localhost:7071/api/GetCVCounter';
+const functionApiURL = 'https://azurecvcounter.azurewebsites.net';
+const localfunctionApi = 'http://localhost:7071/api/GetCVCounter';
 
 const getVisitCount = () => {
     let count = 30;
-    fetch(functionApi).then(Response => {
+    fetch(functionApiURL).then(Response => {
         return Response.json()
     }).then(Response =>{
         console.log("website called function API.");
