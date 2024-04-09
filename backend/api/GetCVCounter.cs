@@ -13,13 +13,8 @@ namespace Company.Function
         [FunctionName("GetCVCounter")]
         public static HttpResponseMessage Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-<<<<<<< HEAD
-            [CosmosDB(databaseName: "AzureCV", containerName: "%Counter%", Connection = "%AzureCVConnectionString%", Id = "1", PartitionKey = "1")] Counter counter,
-            [CosmosDB(databaseName: "AzureCV", containerName: "%Counter%", Connection = "%AzureCVConnectionString%", Id = "1", PartitionKey = "1")] out Counter updatedCounter,
-=======
             [CosmosDB(databaseName:"AzureCV", containerName: "Counter", Connection = "AzureCVConnectionString", Id = "1", PartitionKey = "1")] Counter counter,
             [CosmosDB(databaseName:"AzureCV", containerName: "Counter", Connection = "AzureCVConnectionString", Id = "1", PartitionKey = "1")] out Counter updatedCounter,
->>>>>>> db03df242e10b651b0f8f0f5588a8bed5f62e15a
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
