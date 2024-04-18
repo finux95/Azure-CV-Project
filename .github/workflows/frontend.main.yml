@@ -15,8 +15,8 @@ jobs:
     - uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZCV_APP_ID }}
-          tenant-id: ${{ secrets.AZCV_TEN_ID }}
-          subscription-id: ${{ secrets.AZCV_SUB_ID }}
+        tenant-id: ${{ secrets.AZCV_TEN_ID }}
+        subscription-id: ${{ secrets.AZCV_SUB_ID }}
 
     - name: Upload to blob storage
       uses: azure/CLI@v1
