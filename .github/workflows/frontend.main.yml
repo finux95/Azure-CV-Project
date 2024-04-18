@@ -9,6 +9,7 @@ on:
 
 permissions:
   id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
 
 jobs:
   build:
@@ -25,7 +26,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name azurecvproject --account-key ${{ secrets.AZ_CV_KEY }} -d '$web' -s frontend/ --overwrite
+            az storage blob upload-batch --account-name azurecvproject --auth-mode key -d '$web' -s frontend/ --overwrite
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
       with:
