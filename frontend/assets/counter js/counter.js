@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded',(event) =>{
     getVisitCount();
 })
 
-const functionApiURL = 'https://azurecvcounter.azurewebsites.net';
+const functionApiURL = 'https://azurecvcounter.azurewebsites.net/api/GetCVCounter?code=4y-e0jLBS50QTe9jaK1dTkqFj3y_K0-QTJHncwGWs-K-AzFuW9Nlmg==';
 const localfunctionApi = 'http://localhost:7071/api/GetCVCounter';
 
 const getVisitCount = () => {
