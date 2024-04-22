@@ -4,7 +4,10 @@
     text-align: center;
     padding: 16.5px 0 0; /* Adjusted padding */
     margin: 0 7.5px; /* Adjusted margin */
-    position: relative;
+    position: fixed; /* Position fixed to keep it at a specific location */
+    bottom: 20px; /* Adjusted positioning to bottom */
+    right: 20px; /* Adjusted positioning to right */
+    z-index: 9999; /* Set a high z-index to ensure it appears above other content */
 }
 
 .counter:before {
@@ -48,6 +51,7 @@
     font-weight: 400;
     text-transform: capitalize;
     margin: 0 0 4.5px; /* Adjusted margin */
+    color: white; /* Set the text color to white */
 }
 
 .counter .counter-value {
