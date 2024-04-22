@@ -51,7 +51,7 @@
     font-weight: 400;
     text-transform: capitalize;
     margin: 0 0 4.5px; /* Adjusted margin */
-    color: white; /* Set the text color to white */
+    color: white !important; /* Set the text color to white */
 }
 
 .counter .counter-value {
