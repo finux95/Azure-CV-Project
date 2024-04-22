@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "AzureCVConnectionString":"AccountEndpoint=https://cvdbacc.documents.azure.com:443/;AccountKey=cL5SpJp4mPdbHRQY1j4eVgNqjimJpbljmUmQNilD7qEa0ihmLwsxQoEcbFaDxxUuYTbKguikXufMACDbe6WAQA==;"
+  },
+  "Host":
+  {
+    "CORS": "*"
+  }
+}
