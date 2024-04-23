@@ -6,17 +6,16 @@ const functionApiURL = 'https://azurecvcounter.azurewebsites.net/api/GetCVCounte
 const localfunctionApi = 'http://localhost:7071/api/GetCVCounter';
 
 const getVisitCount = () => {
-    let count = 30;
-    fetch(functionApiURL).then(Response => {
-        return Response.json()
-    }).then(Response =>{
-        console.log("website called function API.");
-        count = Response.count;
-        document.getElementById("counter").innerText = count;
-    }).catch(function(error){
-        console.log(error);
-    });
-    return count;
+    fetch(functionApiURL)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Website called function API.");
+            const count = data.count;
+            document.getElementById("counter").innerText = count;
+        })
+        .catch(error => {
+            console.error("Error fetching visit count:", error);
+        });
 }
 //<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
  
